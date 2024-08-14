@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Question {{q_num + 1}}{% endblock%}
+
+{% block content %}
+<form action="/answer?q_num={{ q_num }}" method="POST">
+    <h1>Question {{q_num + 1}}:</h1>
+    <p>{{question}}</p>
+    <!--find the question at the index of the question number-->
+    <div>
+        {% for choice in choices %}
+        <label for="{{answer}}">{{choice}}</label>
+        <input type="radio" name="answer" value="{{choice}}">
+        {% endfor %}
+        <input type="hidden" name="q_num" value="{{q_num}}">
+    </div>
+    <button>Submit</button>
+</form>
+{% endblock %}
